@@ -68,6 +68,39 @@ C:\Users\jchen\flutter\bin\flutter.bat pub get
 C:\Users\jchen\flutter\bin\flutter.bat run
 ```
 
+### Build a Windows `.exe`
+
+1. Enable Windows desktop support if needed:
+
+```powershell
+C:\Users\jchen\flutter\bin\flutter.bat config --enable-windows-desktop
+```
+
+2. Build the Windows release app:
+
+```powershell
+C:\Users\jchen\flutter\bin\flutter.bat build windows --release
+```
+
+3. Open the generated build output:
+
+```powershell
+explorer .\build\windows\x64\runner\Release\
+```
+
+The folder contains `flutter_pos.exe` plus the required runtime files. Keep the full folder together when moving it to another machine.
+
+### Create a simple distributable package
+
+If you want to share the Windows app without rebuilding:
+
+1. Build the release app.
+2. Copy everything inside `build\windows\x64\runner\Release\`.
+3. Zip that folder and distribute the archive.
+4. On the target machine, extract it and run `flutter_pos.exe`.
+
+For a proper Windows installer, you would typically add a packaging tool such as Inno Setup or MSIX later.
+
 ### Run checks
 
 ```powershell
